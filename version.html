@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" ref="image/favicon.ico">
-    <title>絵文字雑談サーバー公式サイト</title>
+    <title>サーバー更新情報</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -43,7 +43,7 @@
             text-align: center;
         }
 
-        .step, .rule {
+        .daiji, .hutu, .tyoto {
             margin: 20px 0;
             padding: 15px;
             border-radius: 5px;
@@ -51,20 +51,23 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        body.light-mode .step, body.light-mode .rule {
+        body.light-mode .daiji,
+        body.light-mode .hutu,
+        body.light-mode .tyoto {
             background: #e0e0e0;
             color: #000;
         }
 
-        .step { border-left: 5px solid #007bff; }
-        .rule { border-left: 5px solid #ff2e2e; }
+        .daiji { border-left: 5px solid #a600ff; }
+        .hutu  { border-left: 5px solid #267dff; }
+        .tyoto { border-left: 5px solid #4eff80; }
 
         .btn {
       display: inline-block;
       background: linear-gradient(90deg, #007bff, rgb(0, 115, 255));
       color: rgb(255, 255, 255);
       padding: 1rem 2.4rem;
-      border-radius: 27px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.15rem;
@@ -73,12 +76,13 @@
       border: none;
       cursor: pointer;
     }
+
         .disbtn {
       display: inline-block;
       background: linear-gradient(90deg, #25e100, rgb(0, 200, 7));
       color: rgb(255, 255, 255);
       padding: 1rem 2.4rem;
-      border-radius: 27px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.15rem;
@@ -93,7 +97,7 @@
       background: linear-gradient(90deg, #434343, rgb(95, 95, 95));
       color: rgb(255, 255, 255);
       padding: 1rem 2.4rem;
-      border-radius: 27px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.15rem;
@@ -102,6 +106,7 @@
       border: none;
       cursor: pointer;
     }
+    
     .btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 40px -10px #1e40af80;
@@ -121,7 +126,6 @@
       box-shadow: 0 20px 40px -10px #1e40af80;
       background: linear-gradient(90deg, #50a4ff, #53a0ff);
     }
-
         @media (max-width: 768px) {
             .container { padding: 15px; }
             h1 { font-size: 20px; }
@@ -139,7 +143,7 @@
         }
 
         .menu-toggle {
-      background: linear-gradient(90deg, #007bff, rgb(0, 115, 255));
+     background: linear-gradient(90deg, #007bff, rgb(0, 115, 255));
       color: rgb(255, 255, 255);
       padding: 1rem 2.4rem;
       border-radius: 27px;
@@ -208,47 +212,53 @@
             background-color: #fff;
             color: #000;
         }
+
     </style>
 </head>
 <body>
 
     <!-- 右上メニュー -->
     <div class="menu-container">
-        <button class="menu-toggle"><strong>メニュー</strong></button>
+        <button class="menu-toggle">メニュー</button>
         <div class="menu">
-            <button class="light"><strong>ライトモード</strong></button>
-            <button class="dark"><strong>ダークモード</strong></button>
+            <button class="light">ライトモード</button>
+            <button class="dark">ダークモード</button>
         </div>
     </div>
 
-        <button class="nobtn">ホーム</button>
+        <button class="btn" onclick="window.location.href='index.html'">ホーム</button>
     <button class="btn" onclick="window.location.href='admin.html'">運営一覧</button>
-    <button class="btn" onclick="window.location.href='version.html'">サイト更新情報</button>
-<p> </p>
+    <button class="nobtn">サイト更新情報</button>
     <div class="container">
-        <h1>"絵文字雑談サーバー"へ参加しよう！</h1>
-        <div class="step">
-    <h2>サーバーについての説明</h2>
-    <p><strong>沢山の絵文字を使って雑談！ゲームしながら通話をしたり、アイテムのトレードをしたりサーバー内の通貨を使って特別なロールなどの商品を買ったりして楽しもう！</strong></p>
-    <img id="server-img" src="image/main_dark" alt="サーバー画像">
-</div>
-        <div class="rule">
-            <h2>サーバーを利用する前に</h2>
-            <p>必ず以下のルールを読んでからご参加ください。</p>
-            <h2>メッセージの規制</h2>
-            <p>暴言や卑猥な発言、他の方が不機嫌になったり気分が悪くなってしまう事などはお控えください。</p>
-            <h2>サイトへの誘導</h2>
-            <p>情報を抜く様なものや、他者の端末へ危害を加える行為は禁止とします。他のDiscordサーバーへの宣伝などは#宣伝系でお願い致します。</p>
-            <h2>荒らし行為</h2>
-            <p>アプリコマンドを使用したり連投をして他の方の迷惑になるような行為はすべて禁止です。</p>
-            <h2>参加して直ぐに脱退する行為</h2>
-            <p>参加してすぐにサーバーを脱退する様な行為はお辞めください。何度も繰り返すと永久にBANになる可能性があります。</p>
-            <p>ここまで読んで理解できた方は以下のボタンを押して参加してください。</p>
-            <button class="disbtn" onclick="window.location.href='https://discord.gg/NTzybmQzB3'">Discordサーバーに参加</button>
-        <a href="kousin/index.html" class="no-url"></a>
+
+        <h1>サイト更新情報</h1>
+         <div class="hutu">
+            <h2>v1.2.1　26/2/7</h2>
+            <p>ボタンの位置と見た目を変更しました。</p>
+        </div>
+        <div class="daiji">
+            <h2>v1.2.0　26/2/1</h2>
+            <p>メニューでライトモードとダークモードを切り替えられるようにしました。</p>
+        </div>
+        <div class="tyoto">
+            <h2>v1.1.2　26/2/1</h2>
+            <p>ボタンの順を変更しました</p>
+        </div>
+        <div class="hutu">
+            <h2>v1.1.1　26/2/1</h2>
+            <p>更新情報を追加しました</p>
+            <p>ダークモードに変更しました。</p>
+        </div>
+        <div class="hutu">
+            <h2>v1.1.0　26/2/1</h2>
+            <p>運営一覧が追加されました。</p>
+        </div>
+        <div class="daiji">
+            <h2>v1.0.0　26/2/1</h2>
+            <p>サイトが公開されました。</p>
         </div>
     </div>
-<script src="index.js"></script>
+    <script src="index.js"></script>
 
 </body>
 </html>
