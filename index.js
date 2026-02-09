@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('light-mode');
         fadeImage('image/main_dark.png');
     } else {
-        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
         fadeImage('image/main_light.png');
     }
 });
@@ -41,7 +41,7 @@ lightButton.addEventListener('click', () => {
 
 // ダークモード
 darkButton.addEventListener('click', () => {
-    document.body.classList.remove('light-mode');
+    document.body.classList.remove('dark-mode');
     fadeImage('image/main_light.png');
     localStorage.setItem('theme', 'dark'); // 保存
 });
