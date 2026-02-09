@@ -1,3 +1,5 @@
+// theme-switcher.js
+
 const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu');
 const lightButton = document.querySelector('.menu .light');
@@ -5,49 +7,42 @@ const darkButton = document.querySelector('.menu .dark');
 const serverImg = document.getElementById('server-img');
 
 // メニュー開閉
-menuToggle?.addEventListener('click', () => {
-    menu.classList.toggle('open');
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('open');
 });
 
-// フェード切り替え
-function updateImage() {
-    if (!serverImg) return;
-
-    const isLight = document.body.classList.contains('light-mode');
-    const newSrc = isLight
-        ? 'image/main_light.png'
-        : 'image/main_dark.png';
-
-    serverImg.style.opacity = 0;
-    setTimeout(() => {
-        serverImg.src = newSrc;
-        serverImg.style.opacity = 1;
-    }, 300);
+// フェードで画像切り替え
+function fadeImage(newSrc) {
+  serverImg.style.opacity = 0;
+  setTimeout(() => {
+    serverImg.src = newSrc;
+    serverImg.style.opacity = 1;
+  }, 300);
 }
 
-// 初期状態
+// 初期化（ここが一番大事）
 document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('theme');
+  const savedMode = localStorage.getItem('theme');
 
-    if (saved === 'light') {
-        document.body.classList.add('light-mode');
-    } else {
-        document.body.classList.remove('light-mode');
-    }
-
-    updateImage();
-});
-
-// ライト
-lightButton?.addEventListener('click', () => {
+  if (savedMode === 'light') {
     document.body.classList.add('light-mode');
-    localStorage.setItem('theme', 'light');
-    updateImage();
+    fadeImage('image/main_light.png');
+  } else {
+    document.body.classList.remove('light-mode');
+    fadeImage('image/main_dark.png');
+  }
 });
 
-// ダーク
-darkButton?.addEventListener('click', () => {
-    document.body.classList.remove('light-mode');
-    localStorage.setItem('theme', 'dark');
-    updateImage();
+// ライトモード
+lightButton.addEventListener('click', () => {
+  document.body.classList.add('light-mode');
+  fadeImage('image/main_light.png');
+  localStorage.setItem('theme', 'light');
+});
+
+// ダークモード
+darkButton.addEventListener('click', () => {
+  document.body.classList.remove('light-mode');
+  fadeImage('image/main_dark.png');
+  localStorage.setItem('theme', 'dark');
 });
