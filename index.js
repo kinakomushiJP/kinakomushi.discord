@@ -5,13 +5,18 @@ const darkButton = document.querySelector('.menu .dark');
 const serverImg = document.getElementById('server-img');
 
 // メニュー開閉
-menuToggle.addEventListener('click', () => {
+menuToggle?.addEventListener('click', () => {
     menu.classList.toggle('open');
 });
 
 // フェード切り替え
-function fadeImage(newSrc) {
+function updateImage() {
     if (!serverImg) return;
+
+    const isLight = document.body.classList.contains('light-mode');
+    const newSrc = isLight
+        ? 'image/main_light.png'
+        : 'image/main_dark.png';
 
     serverImg.style.opacity = 0;
     setTimeout(() => {
@@ -20,29 +25,29 @@ function fadeImage(newSrc) {
     }, 300);
 }
 
-// 初期読み込み
+// 初期状態
 document.addEventListener('DOMContentLoaded', () => {
-    const savedMode = localStorage.getItem('theme');
+    const saved = localStorage.getItem('theme');
 
-    if (savedMode === 'light') {
+    if (saved === 'light') {
         document.body.classList.add('light-mode');
-        fadeImage('image/main_light.png');
     } else {
         document.body.classList.remove('light-mode');
-        fadeImage('image/main_dark.png');
     }
+
+    updateImage();
 });
 
 // ライト
-lightButton.addEventListener('click', () => {
+lightButton?.addEventListener('click', () => {
     document.body.classList.add('light-mode');
-    fadeImage('image/main_light.png');
     localStorage.setItem('theme', 'light');
+    updateImage();
 });
 
 // ダーク
-darkButton.addEventListener('click', () => {
+darkButton?.addEventListener('click', () => {
     document.body.classList.remove('light-mode');
-    fadeImage('image/main_dark.png');
     localStorage.setItem('theme', 'dark');
+    updateImage();
 });
