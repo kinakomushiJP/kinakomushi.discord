@@ -13,16 +13,19 @@ menuToggle.addEventListener('click', () => {
 
 // 画像をフェードで切り替える関数
 function fadeImage(newSrc) {
+    if (!serverImg) return; // 画像が無いページ対策
+
     serverImg.style.opacity = 0;
+
     setTimeout(() => {
         serverImg.src = newSrc;
         serverImg.style.opacity = 1;
     }, 300);
 }
 
-// ページ読み込み時に保存されたモードを反映
+// ページ読み込み時
 document.addEventListener('DOMContentLoaded', () => {
-    const savedMode = localStorage.getItem('theme'); // 'light' or 'dark'
+    const savedMode = localStorage.getItem('theme');
 
     if (savedMode === 'light') {
         document.body.classList.add('light-mode');
