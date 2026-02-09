@@ -1,5 +1,3 @@
-// theme-switcher.js
-
 const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu');
 const lightButton = document.querySelector('.menu .light');
@@ -20,29 +18,31 @@ function fadeImage(newSrc) {
   }, 300);
 }
 
-// 初期化（ここが一番大事）
+// 初期化
 document.addEventListener('DOMContentLoaded', () => {
   const savedMode = localStorage.getItem('theme');
 
   if (savedMode === 'light') {
+    // ライトモード → 暗い画像
     document.body.classList.add('light-mode');
-    fadeImage('image/main_light.png');
-  } else {
-    document.body.classList.remove('light-mode');
     fadeImage('image/main_dark.png');
+  } else {
+    // ダークモード → 明るい画像
+    document.body.classList.remove('light-mode');
+    fadeImage('image/main_light.png');
   }
 });
 
 // ライトモード
 lightButton.addEventListener('click', () => {
   document.body.classList.add('light-mode');
-  fadeImage('image/main_light.png');
+  fadeImage('image/main_dark.png');
   localStorage.setItem('theme', 'light');
 });
 
 // ダークモード
 darkButton.addEventListener('click', () => {
   document.body.classList.remove('light-mode');
-  fadeImage('image/main_dark.png');
+  fadeImage('image/main_light.png');
   localStorage.setItem('theme', 'dark');
 });
