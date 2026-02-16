@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" ref="favicon.ico">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>絵文字雑談サーバー公式サイト</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -175,7 +175,18 @@
             right: 20px;
             z-index: 1000;
         }
+/* メニューを隠す状態 */
+.menu-container.hide {
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
+/* 通常表示（デフォルト） */
+.menu-container {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
         .menu-toggle {
       background: linear-gradient(90deg, #007bff, rgb(0, 115, 255));
       color: rgb(255, 255, 255);
@@ -281,6 +292,7 @@
     <button data-scroll="home">ホーム</button>
     <button data-scroll="admin">運営一覧</button>
     <button data-scroll="version">サイト更新情報</button>
+    <button data-scroll="otoiawase">お問い合わせ</button>
 
 
         <hr>
@@ -292,7 +304,7 @@
     </div>
 <p> </p>
 </div>
-  <section id="home">
+      <section id="home">
             <div class="container">
         <h1>"絵文字雑談サーバー"へ参加しよう！</h1>
         <div class="step">
@@ -347,6 +359,10 @@
     <p> </p>
     <div class="container">
         <h1>サイト更新情報</h1>
+            <div class="hutu">
+            <h2>v1.4.1　26/2/16</h2>
+            <p>メニューの修正とお問い合わせ方法の追加</p>
+        </div>
             <div class="daiji">
             <h2>v1.4.0　26/2/14</h2>
             <p>サイトを一つにしました。</p>
@@ -387,6 +403,20 @@
         </div>
     </div>
   </section>
+
+      <section id="otoiawase">
+<p> </p>
+        <div class="container">
+        <h1>お問い合わせ</h1>
+        <div class="rize">
+            <h2>お問い合わせ方法</h2>
+            <h2>1,</h2>
+            <p>Discordで<strong>@kina_int3 </strong>にDM(ダイレクトメッセージ)を送信する。</p>
+            <h2>2,</h2>
+            <p>Discordサーバーの専用チャンネル(#お問い合わせ)へ送信する。</p>
+        </div>
+    </div>
+      </section>
 <script src="index.js"></script>
 </body>
 </html>
