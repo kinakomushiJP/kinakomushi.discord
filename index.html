@@ -328,9 +328,29 @@ body.light-mode .header {
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* ヘッダーボタン（共通） */
 .header button {
-    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* アイコン */
+.header .icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ===== 縦長（スマホ比率） ===== */
+@media (max-aspect-ratio: 3/4) {
+    .header .text {
+        display: none;
+    }
+
+    .header .icon {
+        opacity: 1;
+    }
 }
 
 /* ライトモードの文字色 */
@@ -353,19 +373,52 @@ body.light-mode .header button:hover {
 .header button {
     transition: background 0.2s ease, color 0.2s ease;
 }
+
+/* テーマ切替ボタン */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.theme-toggle img {
+    width: 26px;
+    height: 26px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
     </style>
 </head>
 <body>
 
-    <!-- 右上メニュー -->
-     <header class="header">
-    <button data-scroll="home">ホーム</button>
-    <button data-scroll="admin">運営一覧</button>
-    <button data-scroll="otoiawase">お問い合わせ</button>
-    <button data-scroll="version">サイト更新情報</button>
-    <button class="light"><strong>ライトモード</strong></button>
-    <button class="dark"><strong>ダークモード</strong></button>
+<header class="header">
+  <button data-scroll="home" data-icon="home">
+    <img class="icon" alt="">
+    <span class="text">ホーム</span>
+  </button>
+
+  <button data-scroll="admin" data-icon="admin">
+    <img class="icon" alt="">
+    <span class="text">運営一覧</span>
+  </button>
+
+  <button data-scroll="version" data-icon="version">
+    <img class="icon" alt="">
+    <span class="text">更新情報</span>
+  </button>
+
+  <button data-scroll="otoiawase" data-icon="otoiawase">
+    <img class="icon" alt="">
+    <span class="text">お問い合わせ</span>
+  </button>
+
+<button id="theme-toggle" class="theme-toggle">
+  <img id="theme-icon" alt="theme toggle">
+</button>
 </header>
+
 <p> </p>
 </div>
       <section id="home">
