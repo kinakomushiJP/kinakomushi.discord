@@ -789,10 +789,6 @@ body.light-mode {
   </section>
   </section>
   <div id="custom-cursor"></div>
-<!-- Firebase 読み込み -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-
 <script>
 console.log("Firebase loaded");
 
@@ -809,10 +805,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+const connectedRef = db.ref(".info/connected");
 const connectionsRef = db.ref("connections");
 
-const myConnectionRef = connectionsRef.push();
-myConnectionRef.onDisconnect().remove();
+connectedRef.on("value", (snap) => {
+  if (snap.val() === true) {
+    const con = connectionsRef.push();
+    con.onDisconnect().remove();
+  }
+});
 
 connectionsRef.on("value", (snapshot) => {
   const count = snapshot.exists()
