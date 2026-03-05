@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <title>絵文字雑談サーバー公式サイト</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+    <title>サーバー</title>
+        <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #101010;
@@ -657,397 +655,128 @@ body.light-mode .update-header {
 }
 
 .responsive-img {
-  width: 50%;
-  max-width: 500px;
+  width: 35%;
+  max-width: 750px;
   height: auto;
   border-radius: 10px;
   margin: 15px auto;
   display: block;
 }
 
-/* 上メニュー */
-.top-menu {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  background: #181818;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-
-  transition: top 0.6s ease;
+.center-x-text{
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ライトモード */
-body.light-mode .top-menu {
-    background: #f5f5f5;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+.card {
+    width: 90%;
+    max-width: 420px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+    border-radius: 16px;
+
+    background: #121212;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+    transition: transform 0.3s;
 }
 
-.top-menu.open {
-  top: 70px;
+body.light-mode .card {
+  background: #bababa;
+  color: #000;
 }
 
-.top-menu button{
-  padding:8px 14px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
+/* ホバーで少し浮く */
+.card:hover {
+    transform: translateY(-6px);
 }
 
-/* 開閉ボタン */
-#headerToggle{
-  font-size:18px;
+.card img {
+    width: 100%;
+    max-width: 240px;
+
+    height: auto;
+}
+
+/* ボタン */
+.join-btn {
+    background: linear-gradient(90deg,#5865F2,#4752C4);
+    color: white;
+
+    border: none;
+    padding: 12px 30px;
+
+    border-radius: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.join-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
     </style>
-    <!-- Firebase v8 SDK -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
-<!-- カスタムアラート -->
-<div id="custom-alert" class="custom-alert">
-  <span class="alert-icon">✔</span>
-  <span class="alert-text">送信が完了しました</span>
-</div>
-
-<header class="header">
-
-    <div class="top-menu" id="topMenu">
-<button onclick="window.location.href='https://kinakomushijp.github.io/kinakomushi.discord/profire.html'">
-    <span class="text">プロフィール</span>
+    <header class="header">
+<button onclick="window.location.href='https://kinakomushijp.github.io/kinakomushi.discord/index.html'">
+    <span class="text">絵文字・雑談サーバー</span>
   </button>
     </div>
-
-    <button id="headerToggle">▲</button>
-
-  <button data-scroll="home" data-icon="home">
-    <img class="icon" alt="">
-    <span class="text">ホーム</span>
-  </button>
-
-  <button data-scroll="admin" data-icon="admin">
-    <img class="icon" alt="">
-    <span class="text">運営一覧</span>
-  </button>
-
-  <button data-scroll="otoiawase" data-icon="otoiawase">
-    <img class="icon" alt="">
-    <span class="text">お問い合わせ</span>
-  </button>
-
-  <button data-scroll="version" data-icon="version">
-    <img class="icon" alt="">
-    <span class="text">更新情報</span>
-  </button>
-
-<button id="theme-toggle" class="theme-toggle">
+    <button id="theme-toggle" class="theme-toggle">
   <img id="theme-icon" alt="theme toggle">
 </button>
 </header>
 
-<p> </p>
-</div>
-<section class="scroll-section" id="home">
-      <section id="home">
         <div class="container">
-          <img src="image/server1.png" class="responsive-img">
-          <h1>絵文字・雑談サーバー</h1>
-          <div class="step">
-          <h2>現在の閲覧数</h2>
-          <p><span id="viewerCount">-</span> 人が閲覧中</p>
+        <h1>サーバー</h1>
+        <div class="daiji">
+          <h1>メインサーバー(おすすめ)</h1>
+<div class="card">
+  <h1>絵文字・雑談サーバー</h1>
+    <img src="image/server1.png">
+
+<button class="disbtn" onclick="window.location.href='https://discord.gg/VzD2Pn8f'">参加する</button>
+        </div>
+        </div>
+
+              <div class="hutu">
+          <h1>サブサーバー</h1>
+
+<div class="card">
+  <h1>ぴーや教</h1>
+    <img src="image/server2.png">
+
+<button class="disbtn" onclick="window.location.href='https://discord.gg/BJgRGs66mf'">参加する</button>
 </div>
-<p>ㅤ</p>
-<p>ㅤ</p>
-        <h1>"絵文字雑談サーバー"へ参加しよう！</h1>
-        <div class="step">
-    <h2>サーバーについての説明</h2>
-    <p><strong>沢山の絵文字を使って雑談！ゲームしながら通話をしたり、アイテムのトレードをしたりサーバー内の通貨を使って特別なロールなどの商品を買ったりして楽しもう！</strong></p>
-<img
-  id="server-img"
-  class="fade-img"
-  src="image/main_light.png"
-  alt=""
->
+
+<div class="card">
+  <h1>びーや教</h1>
+    <img src="image/server3.png">
+
+<button class="disbtn" onclick="window.location.href='https://discord.gg/Na66qdN8FW'">参加する</button>
 </div>
-        <div class="rule">
-            <h2>サーバーを利用する前に</h2>
-            <p>必ず以下の規約を読んでからご参加ください。</p>
-            <h2>メッセージの規制</h2>
-            <p>他の利用者が不快に感じる行為や、サーバー運営を妨げる行為は禁止します。</p>
-            <h2>ウェブサイトへの誘導</h2>
-            <p>情報を抜き取る様なものや、他者へ危害を加える行為は禁止とします。他のDiscordサーバーへの宣伝などは専用のチャンネルでお願い致します。</p>
-            <h2>参加後すぐの脱退について</h2>
-            <p>参加直後の脱退を繰り返す行為は、運営判断により利用制限や永久追放の対象となる場合があります。</p>
-            <p>本規約に違反した場合、運営の判断により警告、メッセージ削除、タイムアウト、追放等の措置を行う場合があります。</p>
-            <p>ルールを全て拝読し、承諾していただけた場合はDiscordサーバーへご参加ください。</p>
-            <button class="disbtn" onclick="window.location.href='https://kinakomushijp.github.io/kinakomushi.discord/server.html'">Discordサーバーに参加</button>
-        </div>
-    </div>
-  </section>
-  </section>
-  <section class="scroll-section" id="admin">
-      <section id="admin">
-<p> </p>
-        <div class="container">
-        <h1>サーバー運営</h1>
-        <div class="kina">
-            <h2>きなこむし</h2>
-            <p>役割: Owner</p>
-            <img src="image/kinakomushi.png">
-        </div>
-        <div class="yasa">
-            <h2>野菜の旨味</h2>
-            <p>役割: Admin</p>
-            <img src="image/yasainoumami.png">
-        </div>
-        <div class="rize">
-            <h2>幻庭 恋灯</h2>
-            <p>役割: Sub Admin</p>
-            <img src="image/rizeruhosi.png">
-        </div>
-    </div>
-      </section>
-</section>
-<p> </p>
-<section class="scroll-section" id="otoiawase">
-<section id="otoiawase">
-  <div class="container">
-    <h1>お問い合わせ</h1>
-<form
-  id="contact-form"
-  action="https://formspree.io/f/mdalyqnn"
-  method="POST"
->
-  <!-- 名前（任意） -->
-  <label>
-    名前（Discordでのニックネーム）
-    <input
-      type="text"
-      id="name"
-      placeholder="例：さかなくんA"
-    >
-  </label>
-
-  <!-- メールアドレス -->
-  <label>
-    メールアドレス
-    <input
-      type="email"
-      name="email"
-      placeholder="メールアドレス（任意）">
-  </label>
-
-  <!-- メッセージ -->
-  <label>
-    メッセージ
-    <textarea
-      id="message"
-      name="message"
-      rows="6"
-      required
-      placeholder="お問い合わせ内容を入力してください"
-    ></textarea>
-  </label>
-
-<button type="submit" class="btn" id="submit-btn">
-    送信
-  </button>
-</form>
-<h1>サイトからの送信以外の方法</h1>
-            <div class="daiji">
-                <h2>Discord</h2>
-            <p>@kina_int のDMへ送信する。</p>
-        </div>
-            </div>
-      </section>
-      </section>
-
-      <section class="scroll-section" id="version">
-      <section id="version">
-    <p> </p>
-    <div class="container">
-        <h1>サイト更新情報</h1>
-
-<div class="daiji updates">
-  <div class="update-item active">
-    <div class="update-header">v1.6.3</div>
-    <div class="update-content">
-          <p>26/3/5</p>
-            <p>更新情報をより見やすくしました。</p>
-            <p>更新情報の誤字を修正しました。</p>
-            <p>項目へカーソルを移動したときにアニメーションが追加されました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.6.2</div>
-    <div class="update-content">
-          <p>26/3/3</p>
-            <p>現在のページの閲覧数を見れるようになりました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.6.1</div>
-    <div class="update-content">
-          <p>26/3/2</p>
-            <p>スマホで専用のカーソルを表示させないようにしました。</p>
-            <p>クリック・タップをするとエフェクトが出るようになりました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.6.0</div>
-    <div class="update-content">
-          <p>26/2/26</p>
-            <p>お問い合わせの欄から簡単に送信出来るようにしました。入力された内容はサーバーをより良くするために使われます。(オーナーのみ閲覧することができます。)</p>
-<p>項目を移動すると表示されたり非表示になったりするようになりました。</p>
-<p>マウスカーソルがこのサイトでのみ変わるようにしました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.5.1</div>
-    <div class="update-content">
-          <p>26/2/20</p>
-            <p>メニューのボタンにアイコンを追加しました。</p>
-            <p>メニュをスマートフォン用に改良しました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.5.0</div>
-    <div class="update-content">
-          <p>26/2/19</p>
-            <p>メニューを変更しました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.4.1</div>
-    <div class="update-content">
-          <p>26/2/16</p>
-            <p>メニューの修正とお問い合わせ方法を追加しました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.4.0</div>
-    <div class="update-content">
-          <p>26/2/14</p>
-            <p>サイトを一つにしました。</p>
-            <p>ボタンを変更して全てメニューの中に移動しました。</p>
-            <p>ルールの文を少し変更しました。</p>
-    </div>
-  </div>
-  
-    <div class="update-item">
-    <div class="update-header">v1.3.0</div>
-    <div class="update-content">
-          <p>26/2/9</p>
-            <p>サイトを一つのレポジトリにしました。</p>
-            <p>メニューボタンを変更しました。</p>
-            <p>画像も背景に合わせてフェードで切り替わるようになりました。</p>
-            <p>ボタンとテキストの距離の変更やその他の細かな変更をしました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.2.1</div>
-    <div class="update-content">
-          <p>26/2/7</p>
-            <p>ボタンの位置と見た目を変更しました。</p>
-    </div>
-  </div>
-
-    <div class="update-item">
-    <div class="update-header">v1.2.0</div>
-    <div class="update-content">
-          <p>26/2/1</p>
-            <p>メニューでライトモードとダークモードを切り替えられるようにしました。</p>
-    </div>
-  </div>
-
-  <div class="update-item">
-    <div class="update-header">v1.1.0</div>
-    <div class="update-content">
-          <p>26/2/1</p>
-            <p>運営一覧が追加されました。</p>
-            <p>更新情報を追加しました。</p>
-            <p>ダークモードに変更しました。</p>
-            <p>ボタンの順を変更しました。</p>
-    </div>
-  </div>
-
-  <div class="update-item">
-    <div class="update-header">v1.0.0</div>
-    <div class="update-content">
-      <p>26/2/1</p>
-      <p>サイトが公開されました。</p>
-    </div>
-  </div>
 </div>
-  </section>
-  </section>
-  <div id="custom-cursor"></div>
+<div class="tyoto">
+<div class="card">
+  <h1>ロビー</h1>
+    <img src="image/server4.png">
 
-<script>
-console.log("Firebase loaded");
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAlaNJCHVPr_DGZctrhs5srYVT6NoKBq_k",
-  authDomain: "discord-25cfe.firebaseapp.com",
-  databaseURL: "https://discord-25cfe-default-rtdb.firebaseio.com",
-  projectId: "discord-25cfe",
-  storageBucket: "discord-25cfe.firebasestorage.app",
-  messagingSenderId: "700961783585",
-  appId: "1:700961783585:web:4fc421ab985a8f8f09c860"
-};
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-
-const connectionsRef = db.ref("connections");
-
-// 🔥 まず自分の接続を作る
-const myConnectionRef = connectionsRef.push();
-
-// 🔥 接続データをちゃんと保存
-myConnectionRef.set({
-  connectedAt: Date.now()
-});
-
-// 🔥 切断時に自動削除
-myConnectionRef.onDisconnect().remove();
-
-// 🔥 人数監視
-connectionsRef.on("value", (snapshot) => {
-  const count = snapshot.exists()
-    ? Object.keys(snapshot.val()).length
-    : 0;
-
-  document.getElementById("viewerCount").textContent = count;
-});
-</script>
-<script src="index.js"></script>
-
-<script>
-document.querySelectorAll(".update-header").forEach(header => {
-  header.addEventListener("click", () => {
-    const item = header.parentElement;
-
-    document.querySelectorAll(".update-item").forEach(other => {
-      if (other !== item) {
-        other.classList.remove("active");
-      }
-    });
-
-    item.classList.toggle("active");
-  });
-});
-</script>
+<button class="disbtn" onclick="window.location.href='https://discord.gg/Jd9bYcHqxt'">参加する</button>
+</div>
+</div>
+        <script src="index.js"></script>
 </body>
 </html>

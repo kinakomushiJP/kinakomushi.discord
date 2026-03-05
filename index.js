@@ -460,3 +460,10 @@ if (!isTouchDevice()) {
     });
   });
 }
+
+const toggle = document.getElementById("headerToggle");
+const menu = document.getElementById("topMenu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("open");
+});
