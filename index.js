@@ -320,11 +320,9 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "送信中…";
 
   const nameInput = document.getElementById("name");
-  const emailInput = form.querySelector('input[name="email"]');
   const messageInput = document.getElementById("message");
 
   const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
   const originalMessage = messageInput.value;
 
   // 送信用メッセージを生成
@@ -344,7 +342,6 @@ form.addEventListener("submit", async (e) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: email,
         message: sendMessage
       })
     });
@@ -372,11 +369,6 @@ await fetch("https://discord.com/api/webhooks/1477218371958472724/WT_O6AVWs4jNa1
             name: "👤 名前",
             value: name || "未入力",
             inline: true
-          },
-          {
-  name: "📧 メール",
-  value: email || "未入力",
-  inline: true
           },
           {
             name: "📝 メッセージ",
