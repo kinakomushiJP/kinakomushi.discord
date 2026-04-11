@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <title>絵文字雑談サーバー公式サイト</title>
+    <title>雑談絵文字サーバー - メインサイト</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -1331,6 +1331,25 @@ body.cursor-off * {
           flex: 1 1 100%;
         }
       }
+
+      .header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons button {
+    background: #2a2f3a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.header-buttons button:hover {
+    background: #5865f2;
+}
     </style>
     <!-- Firebase v8 SDK -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -1378,7 +1397,12 @@ body.cursor-off * {
   <span id="theme-icon" class="typcn"></span>
 </button>
 </header>
-
+<section id="home">
+<div class="container">
+  <h2>シンプルなデザインの公式サイトが公開！</h2>
+  <div class="header-buttons"><button onclick="window.location.href='https://kinakomushijp.github.io/kinakomushi.discord/simple.html'">シンプルになったサイトを見てみる！</button></div>
+</div>
+</section>
 <p> </p>
 </div>
 <section class="scroll-section" id="home">

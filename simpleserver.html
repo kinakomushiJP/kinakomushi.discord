@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<title>雑談絵文字サーバー - シンプルデザインサーバーサイト</title>
+
+<style>
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 60px;
+    background: #181c24;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    z-index: 1000;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons button {
+    background: #2a2f3a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.header-buttons button:hover {
+    background: #5865f2;
+}
+
+.main {
+    padding-top: 60px;
+}
+
+.menu {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.menu-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1f2430;
+    cursor: pointer;
+    transition: flex 0.4s cubic-bezier(.25,1,.5,1);
+}
+
+.menu:hover .menu-item:not(:hover) {
+    flex: 0.6;
+}
+
+.menu-item:hover {
+    flex: 2;
+    background: #5865f2;
+}
+
+body {
+  background: #0f1115;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.wrap {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #1f2430;
+  color: white;
+
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+  width: 300px;
+}
+
+.bigshot {
+  background: #1f2430;
+  color: white;
+
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+  width: 1200px;
+}
+
+.Text {
+  display: block;
+  text-align: center;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+.responsive-img {
+  width: 15%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: block;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0f1115;
+  color: white;
+}
+
+      .team-section {
+        padding: 0px 20px 80px;
+        position: relative;
+        z-index: 10;
+        background: #0a0a0a;
+      }
+      .team-wrapper {
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .team-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .team-section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 10px;
+        letter-spacing: -0.01em;
+      }
+      .team-section-desc {
+        font-size: 0.95rem;
+        color: #888;
+        line-height: 1.65;
+        /* max-width: 520px; */
+        margin: 0 auto;
+      }
+      .team-desc-link {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .team-desc-link:hover {
+        color: #fff;
+        border-bottom-color: #fff;
+      }
+      .team-box {
+        background: #101213;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      body.light-mode .team-box {
+    background: #b0b0b0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+      .team-row {
+        display: flex;
+        gap: 5px;
+      }
+      .nameplate-null-user {
+        position: relative;
+        flex: 1;
+        height: 50px;
+        border-radius: 10px;
+        overflow: hidden;
+        z-index: 21;
+        min-width: 0;
+      }
+      .nameplate-null-user-avatar {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        background-color: #1e1f22;
+        border-radius: 50px;
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      .nameplate-null-user-name {
+        position: absolute;
+        height: 20px;
+        background-color: #1e1f22;
+        border-radius: 50px;
+        margin-top: 15px;
+        margin-left: 60px;
+      }
+      .nameplate-null-user-name._1 {
+        width: 70px;
+      }
+      .nameplate-null-user-name._2 {
+        width: 100px;
+      }
+      .nameplate-null-user.nameplate-preview {
+        cursor: pointer;
+        transition: filter 0.15s;
+      }
+      .nameplate-null-user.nameplate-preview:hover {
+        filter: brightness(1.18);
+      }
+      .nameplate-user-avatar {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        margin-left: 10px;
+        margin-top: 5px;
+        background-color: #1e1f22;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 22;
+      }
+      .nameplate-deco {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        transform: translateY(-50%);
+        object-fit: contain;
+        pointer-events: none;
+        z-index: 23;
+      }
+      .nameplate-user-name {
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 60px;
+        max-width: calc(100% - 68px);
+        font-size: 0.82rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        z-index: 22;
+        line-height: 1;
+      }
+      /* Discord Nametag Font Classes */
+      /* Tempo  → Zilla Slab */
+      .dns-font-tempo { font-family: 'Zilla Slab', serif !important; font-size: 0.9rem !important; }
+      /* Sakura → Cherry Bomb One */
+      .dns-font-sakura { font-family: 'Cherry Bomb One', cursive !important; font-size: 0.9rem !important; }
+      /* Jellybean → Chicle */
+      .dns-font-jellybean { font-family: 'Chicle', cursive !important; font-size: 0.9rem !important; }
+      /* Modern → Museo Moderno */
+      .dns-font-modern { font-family: 'MuseoModerno', sans-serif !important; font-size: 0.9rem !important; }
+      /* Medieval → New Amsterdam (closest available; Neo Castel not on Google Fonts) */
+      .dns-font-medieval { font-family: 'New Amsterdam', sans-serif !important; font-size: 0.9rem !important; }
+      /* 8Bit / Pixelfy Sans */
+      .dns-font-8bit { font-family: 'Pixelify Sans', monospace !important; font-size: 0.9rem !important; }
+      /* Vampyre → Cinzel (closest available; Sinistre not on Google Fonts) */
+      .dns-font-vampyre { font-family: 'Cinzel', serif !important; font-size: 0.9rem !important; }
+
+      /* Gradient name effect (mirrors Discord's gradient_dfb989) */
+      .nameplate-user-name.dns-gradient {
+        background: linear-gradient(
+          90deg,
+          var(--dns-color-start, #903cda),
+          var(--dns-color-end, #1fb373)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent !important;
+      }
+
+      /* Neon effect (mirrors Discord's neon_dfb989 + neonGlow_dfb989) */
+      .nameplate-user-name.dns-neon {
+        position: relative;
+        color: var(--dns-neon-color, #7d33ff) !important;
+        -webkit-text-stroke: 0.5px var(--dns-neon-stroke, #7d33ff);
+        text-shadow:
+          0 0 6px var(--dns-neon-stroke, #7d33ff),
+          0 0 14px var(--dns-neon-stroke, #7d33ff);
+        overflow: visible;
+      }
+      .nameplate-user-name.dns-neon::after {
+        content: attr(data-name);
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--dns-neon-stroke, #7d33ff);
+        filter: blur(7px);
+        opacity: 0.65;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      .nameplate-role-label {
+        position: absolute;
+        top: 26px;
+        left: 60px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.5);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - 68px);
+        z-index: 22;
+      }
+      @media (max-width: 900px) {
+        .team-row {
+          flex-wrap: wrap;
+        }
+        .nameplate-null-user {
+          flex: 1 1 calc(50% - 5px);
+        }
+      }
+      @media (max-width: 500px) {
+        .nameplate-null-user {
+          flex: 1 1 100%;
+        }
+      }
+</style>
+</head>
+<body><section class="scroll-section" id="Main"><p>　</p><p>　</p></section>
+ <header>
+    <div class="header-title">絵文字雑談サーバー</div>
+    <div class="header-buttons">
+          <button data-scroll="Main"><span class="text">メインサーバー</span></button>
+          <button data-scroll="Lobby"><span class="text">ロビー</span></button>
+          <button data-scroll="Piya"><span class="text">サブサーバー</span></button>
+    </div>
+ </header>
+  <img src="image/server1.png" class="responsive-img">
+ <h1 class="Text">絵文字雑談サーバー</h1>
+ <div class="wrap">
+ <div class="header-buttons"><button onclick="window.location.href='https://discord.gg/2Shwa7ChRq'">Discordサーバーに参加</button></div>
+  </div>
+  </div>
+  <body><section class="scroll-section" id="Lobby"><p>　</p><p>　</p></section>
+  <img src="image/server4.png" class="responsive-img">
+  <h1 class="Text">きなこむしサーバー・ロビー</h1>
+ <div class="wrap">
+<div class="header-buttons"><button onclick="window.location.href='https://discord.gg/2Shwa7ChRq'">Discordサーバーに参加</button></div>
+  </div>
+  </div>
+  <section class="scroll-section" id="Piya"><p>　</p><p>　</p></section>
+    <img src="image/server2.png" class="responsive-img">
+    <h1 class="Text">ぴーや教</h1>
+<div class="wrap">
+<div class="header-buttons"><button onclick="window.location.href='https://discord.gg/2Shwa7ChRq'">Discordサーバーに参加</button></div>
+  </div>
+  </div>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+  <h2>　</h2>
+<section class="scroll-section" id="Biya"><p>　</p><p>　</p></section>
+    <img src="image/server3.png" class="responsive-img">
+    <h1 class="Text">びーや教</h1>
+    <div class="wrap">
+    <p>隠しサーバー</p>
+    <p>(過疎だし全然喋ってないので入らなくていいです)</p>
+</div><div class="wrap">
+    <div class="header-buttons"><button onclick="window.location.href='https://discord.gg/2Shwa7ChRq'">Discordサーバーに参加</button></div>
+  </div>
+  </div>
+<script src="simple.js"></script>
+</body>
+</html>
