@@ -113,7 +113,7 @@
 </div>
 
 <script>
-    // --- 1. Supabase設定（要書き換え） ---
+    // --- 1. Supabase設定 ---
     const SB_URL = 'https://sphxblzkqxmkrtfiwjnq.supabase.co'; 
     const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwaHhibHprcXhta3J0Zml3am5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4OTE5MjcsImV4cCI6MjA5MzQ2NzkyN30.E6mVpH-eeg5ML7J9fJI0FLqBTiykpo8zEc6DLcHhhig';
     const sb = supabase.createClient(SB_URL, SB_KEY);
@@ -134,38 +134,40 @@
         }
     });
 
+    // ★修正した送信機能（直接Discordに送ります）
     async function send() {
         const msg = document.getElementById('msg-input').value;
         const { data: { session } } = await sb.auth.getSession();
+        
         if (!msg) return alert("Message is empty.");
-        const { error } = await sb.from('contacts').insert([{ name: session.user.user_metadata.full_name, message: msg }]);
-        if (!error) { alert("Sent!"); document.getElementById('msg-input').value = ""; }
+        if (!session) return alert("ログインしてください。");
+
+        // 1. Supabaseのデータベースに一応保存する（エラーが出ても次に進む）
+        await sb.from('contacts').insert([{ name: session.user.user_metadata.full_name, message: msg }]);
+
+        // 2. Discordへ直接送信する
+        const webhookUrl = 'https://discord.com/api/webhooks/1477218371958472724/WT_O6AVWs4jNa1fGfvVo2AZ8LLd7OK4DEespF54El7MQwEAJk6bXbRk7b3FKiyGBvNa7';
+        
+        try {
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    content: `📩 **${session.user.user_metadata.full_name}** さんからのお問い合わせ\n\`\`\`${msg}\`\`\``
+                })
+            });
+
+            // 成功したらアラートを出して、入力欄を空にする
+            alert("Sent!");
+            document.getElementById('msg-input').value = ""; 
+        } catch (error) {
+            alert("Discordへの送信に失敗しました。");
+            console.error(error);
+        }
     }
 
-    // supabase/functions/discord-notify/index.ts
-Deno.serve(async (req) => {
-  const { record } = await req.json()
-  
-  const payload = {
-    embeds: [{
-      title: "📩 新しいお問い合わせ",
-      color: 0x00a8ff, // サイトのアクセントカラー
-      fields: [
-        { name: "名前", value: record.name, inline: true },
-        { name: "メッセージ", value: record.message }
-      ],
-      timestamp: new Date().toISOString()
-    }]
-  }
-
-  await fetch('https://discord.com/api/webhooks/1477218371958472724/WT_O6AVWs4jNa1fGfvVo2AZ8LLd7OK4DEespF54El7MQwEAJk6bXbRk7b3FKiyGBvNa7', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-
-  return new Response("ok")
-})
+    // --- 2. 完璧な背景アニメーション（線・クリック描画・近接線） ---
+    // （ここから下のアニメーションのコードはそのまま残してください！）
 
     // --- 2. 完璧な背景アニメーション（線・クリック描画・近接線） ---
     const bgCanvas = document.getElementById('bg-canvas');
