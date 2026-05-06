@@ -142,6 +142,31 @@
         if (!error) { alert("Sent!"); document.getElementById('msg-input').value = ""; }
     }
 
+    // supabase/functions/discord-notify/index.ts
+Deno.serve(async (req) => {
+  const { record } = await req.json()
+  
+  const payload = {
+    embeds: [{
+      title: "📩 新しいお問い合わせ",
+      color: 0x00a8ff, // サイトのアクセントカラー
+      fields: [
+        { name: "名前", value: record.name, inline: true },
+        { name: "メッセージ", value: record.message }
+      ],
+      timestamp: new Date().toISOString()
+    }]
+  }
+
+  await fetch('ここにDiscordのWebhook URL', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  return new Response("ok")
+})
+
     // --- 2. 完璧な背景アニメーション（線・クリック描画・近接線） ---
     const bgCanvas = document.getElementById('bg-canvas');
     const ctx = bgCanvas.getContext('2d');
